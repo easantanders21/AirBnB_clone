@@ -8,11 +8,19 @@ class BaseModel():
     """ The class template for creating new instances of BaseModel
     """
     def __init__(self, *args, **kwargs):
-        self.id = uuid.uuid4()
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        self.name = ""
-        self.my_number = 0
+        if (kwargs):
+            for k, v in kwargs.items():
+                if (k == "__class__"):
+                    continue
+                if (k == "created_at" or k == "updated_at"):
+                    v = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S.%f')
+                setattr(self, k, v)
+        else:
+            self.id = uuid.uuid4()
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            self.name = ""
+            self.my_number = 0
 
 
     def __str__(self):
@@ -30,6 +38,7 @@ class BaseModel():
         """ Returns a dictionary containing all keys/values of __dict__ of the instance
         """
         my_dict = ({'my_number': self.my_number, 'name': self.name,
-                   '__class__': self.__class__.__name__ , 'updated_at': self.updated_at.isoformat("T", "microseconds"),
+                   '__class__': self.__class__.__name__ ,
+                   'updated_at': self.updated_at.isoformat("T", "microseconds"),
                    'id': self.id, 'created_at': self.created_at.isoformat("T", "microseconds")})
         return my_dict
