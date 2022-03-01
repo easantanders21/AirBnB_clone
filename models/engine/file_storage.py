@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Module that serializes instances to a JSON file and deserializes JSON file to instances
 """
+from models.base_model import BaseModel
 import json
 
 class FileStorage:
@@ -24,17 +25,21 @@ class FileStorage:
         """  serializes __objects to the JSON file (path: __file_path)
         """
         my_dict = {}
-        for k in self.__objects:
-            my_dict[k] = self.__objects[k].to_dict()
+        for k, v in self.__objects.items():
+            my_dict[k] = v.to_dict()
         with open(self.__file_path, "w") as myFile:
             json.dump(my_dict, myFile)
 
     def reload(self):
         """ deserializes the JSON file to __objects (only if the JSON file (__file_path) exists)
         """
+        content = {}
         try: 
             with open(self.__file_path) as json_file:
-                content = json_file.read()
-                self.__objects = json.loads(content)
-        except:
+                content = json.load(json_file)
+                for key, value in content.items():
+                    cls_name = value["__class__"]
+                    obj = eval(cls_name+"(**value)")
+                    self.__objects[key] = obj
+        except FileNotFoundError:
             pass
