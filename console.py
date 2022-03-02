@@ -3,11 +3,13 @@
 """
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 import models
 
 class HBNBCommand(cmd.Cmd):
     """Simple command processor for airbnb."""
     prompt = '(hbnb) '
+    class_dict = {"BaseModel" : BaseModel(), "User" : User()}
     
     def do_quit(self, line):
         return True
@@ -26,8 +28,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         if (line):
-            if (line == "BaseModel"):
-                new_instance = BaseModel()
+            if (line in self.class_dict):
+                new_instance = self.class_dict[line]
                 new_instance.save()
                 print(new_instance.id)
             else:
@@ -39,7 +41,7 @@ class HBNBCommand(cmd.Cmd):
         if(line):
             str_list = []
             str_list = line.split(" ")
-            if (str_list[0] == "BaseModel"):
+            if (str_list[0] in self.class_dict):
                 if(len(str_list) >= 2):
                     key = str_list[0]+"."+str_list[1]
                     show_dict = models.storage.all()
@@ -58,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
         if (line):
             str_list = []
             str_list = line.split(" ")
-            if (str_list[0] == "BaseModel"):
+            if (str_list[0] in self.class_dict):
                 if(len(str_list) >= 2):
                     key = str_list[0]+"."+str_list[1]
                     destro_dict = models.storage.all()
@@ -78,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
         list_values = []
         all_dict = models.storage.all()
         if (line):
-            if (line == "BaseModel"):
+            if (line in self.class_dict):
                 for v in all_dict.values():
                     list_values.append(str(v))
                 print(list_values)
@@ -95,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
             att_name = ""
             att_value = ""
             str_list = line.split(" ")
-            if (str_list[0] == "BaseModel"):
+            if (str_list[0] in self.class_dict):
                 if(len(str_list) >= 2):
                     key = str_list[0]+"."+str_list[1]
                     update_dict = models.storage.all()
