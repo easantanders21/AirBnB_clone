@@ -111,7 +111,6 @@ class HBNBCommand(cmd.Cmd):
                         match = False
                         for k, v in update_dict.items():
                             if (k == key):
-                                print("esta es la key : ",k)
                                 v.__dict__.update({att_name: att_value[1:-1]})
                                 models.storage.save()
                                 match = True
