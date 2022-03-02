@@ -89,6 +89,47 @@ class HBNBCommand(cmd.Cmd):
                 list_values.append(str(v))
             print(list_values)
 
+    def do_update(self, line):
+        if (line):
+            str_list = []
+            att_name = ""
+            att_value = ""
+            str_list = line.split(" ")
+            if (str_list[0] == "BaseModel"):
+                if(len(str_list) >= 2):
+                    key = str_list[0]+"."+str_list[1]
+                    update_dict = models.storage.all()
+                    if (len(str_list) >= 3):
+                        att_name = str_list[2]
+                        if (len(str_list) >= 4):
+                            att_value = str_list[3]
+                        else:
+                            print("** value missing **")
+                    else:
+                        print("** attribute name missing **")
+                    try:
+                        match = False
+                        for k, v in update_dict.items():
+                            if (k == key):
+                                print("esta es la key : ",k)
+                                v.__dict__.update({att_name: att_value[1:-1]})
+                                models.storage.save()
+                                match = True
+                                break
+                        if(match is False):
+                            raise KeyError()
+                    except KeyError:
+                        print("** no instance found **")
+                else:
+                    print("** instance id missing **")
+            else:
+                print("** class doesn't exist **")
+        else:
+            print("** class name missing **")
+        
+        
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
     
