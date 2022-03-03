@@ -89,6 +89,7 @@ class HBNBCommand(cmd.Cmd):
         list_values = []
         all_dict = models.storage.all()
         if (line):
+            line = line.strip()
             if (line in self.class_dict):
                 list_k = []
                 for k, v in all_dict.items():
@@ -142,7 +143,24 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
         else:
             print("** class name missing **")
-
-
+            
+    def do_count(self, line):
+        count_dict = models.storage.all()
+        class_k = []
+        count = 0
+        for k in count_dict.keys():
+            class_k = k.split(".")
+            if (class_k[0] == line.strip()):
+                count += 1
+        print(count)
+                        
+    def default(self, line):
+        line_args = []
+        func_dict = {"all" : self.do_all, "count" : self.do_count, "show" : self.do_show}
+        line = line.replace("(", ".").replace("\"", "").replace(")", ".")
+        line_args = line.split(".")
+        arg = line_args[0] + " " + line_args[2]
+        func_dict[line_args[1]](arg)
+            
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
