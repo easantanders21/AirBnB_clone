@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-""" a class User that inherits from BaseModel """
+""" a class Review that inherits from BaseModel """
 
 from models.base_model import BaseModel
 
 
-class User(BaseModel):
-    """ User class for the HBNB """
-    email = ""
-    password = ""
-    first_name = ""
-    last_name = ""
+class Review(BaseModel):
+    """ Review class for the HBNB """
+    place_id = ""
+    user_id = ""
+    text = ""
