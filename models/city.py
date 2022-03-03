@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-""" a class User that inherits from BaseModel """
+""" a class City that inherits from BaseModel """
 
 from models.base_model import BaseModel
 
 
-class User(BaseModel):
-    """ User class for the HBNB """
-    email = ""
-    password = ""
-    first_name = ""
-    last_name = ""
+class City(BaseModel):
+    """ City class for the HBNB """
+    name = ""
+    state_id = ""
