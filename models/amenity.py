@@ -4,6 +4,6 @@
 from models.base_model import BaseModel
 
 
-class User(BaseModel):
+class Amenity(BaseModel):
     """ Amenity class for the HBNB """
     name = ""

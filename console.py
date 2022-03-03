@@ -2,15 +2,23 @@
 """ console.py that contains the entry point of the command interpreter
 """
 import cmd
+from models.amenity import Amenity
 from models.base_model import BaseModel
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 from models.user import User
+
 import models
 
 
 class HBNBCommand(cmd.Cmd):
     """Simple command processor for airbnb."""
     prompt = '(hbnb) '
-    class_dict = {"BaseModel": BaseModel, "User": User}
+    class_dict = {"Amenity" : Amenity, "BaseModel": BaseModel, 
+                  "City" : City, "Place" : Place, "Review" : Review,
+                  "State" : State, "User" : User}
 
     def do_quit(self, line):
         return True

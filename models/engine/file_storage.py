@@ -2,7 +2,12 @@
 """ Module that serializes instances to a JSON file
     and deserializes JSON file to instances
 """
+from models.amenity import Amenity
 from models.base_model import BaseModel
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 from models.user import User
 import json
 
@@ -13,6 +18,9 @@ class FileStorage:
     """
     __file_path = "file.json"
     __objects = {}
+    class_dict = {"Amenity" : Amenity, "BaseModel": BaseModel, 
+                  "City" : City, "Place" : Place, "Review" : Review,
+                  "State" : State, "User" : User}
 
     def all(self):
         """ returns the dictionary __objects
