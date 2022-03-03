@@ -6,11 +6,12 @@ from models.base_model import BaseModel
 from models.user import User
 import models
 
+
 class HBNBCommand(cmd.Cmd):
     """Simple command processor for airbnb."""
     prompt = '(hbnb) '
-    class_dict = {"BaseModel" : BaseModel(), "User" : User()}
-    
+    class_dict = {"BaseModel": BaseModel, "User": User}
+
     def do_quit(self, line):
         return True
 
@@ -24,12 +25,12 @@ class HBNBCommand(cmd.Cmd):
         print("ctrl+D Quit command to exit the program\n")
 
     def emptyline(self):
-         pass
+        pass
 
     def do_create(self, line):
         if (line):
             if (line in self.class_dict):
-                new_instance = self.class_dict[line]
+                new_instance = self.class_dict[line]()
                 new_instance.save()
                 print(new_instance.id)
             else:
@@ -81,11 +82,17 @@ class HBNBCommand(cmd.Cmd):
         all_dict = models.storage.all()
         if (line):
             if (line in self.class_dict):
-                for v in all_dict.values():
-                    list_values.append(str(v))
+                list_k = []
+                for k, v in all_dict.items():
+                    lista_k = k.split(".")
+                    expresion = line +"."+ lista_k[1]
+                    if (expresion == k):
+                        list_values.append(str(v))
                 print(list_values)
+                return
             else:
                 print("** class doesn't exist **")
+                return
         else:
             for v in all_dict.values():
                 list_values.append(str(v))
@@ -127,10 +134,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
         else:
             print("** class name missing **")
-        
-        
 
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-    
