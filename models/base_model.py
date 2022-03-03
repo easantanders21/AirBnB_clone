@@ -5,6 +5,7 @@ import uuid
 from datetime import datetime
 import models
 
+
 class BaseModel():
     """ The class template for creating new instances of BaseModel
     """
@@ -24,11 +25,11 @@ class BaseModel():
             self.updated_at = datetime.now()
             models.storage.new(self)
 
-
     def __str__(self):
         """ Method for the string form of the class
         """
-        return("[{}] ({}) {})".format(self.__class__.__name__, self.id, self.__dict__))
+        return("[{}] ({}) {})".format(self.__class__.__name__,
+                                      self.id, self.__dict__))
 
     def save(self):
         """ updates the public instance attribute updated_at
@@ -38,7 +39,8 @@ class BaseModel():
         models.storage.save()
 
     def to_dict(self):
-        """ Returns a dictionary containing all keys/values of __dict__ of the instance
+        """ Returns a dictionary containing all keys/values of __dict__
+            of the instance
         """
 
         my_dict = self.__dict__.copy()

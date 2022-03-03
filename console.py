@@ -85,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
                 list_k = []
                 for k, v in all_dict.items():
                     lista_k = k.split(".")
-                    expresion = line +"."+ lista_k[1]
+                    expresion = line + "." + lista_k[1]
                     if (expresion == k):
                         list_values.append(str(v))
                 print(list_values)
