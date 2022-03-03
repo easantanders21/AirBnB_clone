@@ -36,6 +36,8 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, line):
+        print("**********************entro a create*************************")
+        print("esto es lo que se va a crear: ", line)
         if (line):
             if (line in self.class_dict):
                 new_instance = self.class_dict[line]()
@@ -109,6 +111,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         if (line):
+            print(line)
             str_list = []
             att_name = ""
             att_value = ""
@@ -129,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
                         match = False
                         for k, v in update_dict.items():
                             if (k == key):
-                                v.__dict__.update({att_name: att_value[1:-1]})
+                                v.__dict__.update({att_name: att_value.replace("\"", "")})
                                 models.storage.save()
                                 match = True
                                 break
@@ -156,8 +159,9 @@ class HBNBCommand(cmd.Cmd):
                         
     def default(self, line):
         line_args = []
-        func_dict = {"all" : self.do_all, "count" : self.do_count, "show" : self.do_show}
-        line = line.replace("(", ".").replace("\"", "").replace(")", ".")
+        func_dict = {"all" : self.do_all, "count" : self.do_count, "show" : self.do_show,
+                     "destroy" : self.do_destroy, "update" : self.do_update}
+        line = line.replace("(", ".").replace("\"", "").replace(")", ".").replace(",", "")
         line_args = line.split(".")
         arg = line_args[0] + " " + line_args[2]
         func_dict[line_args[1]](arg)
