@@ -9,6 +9,7 @@ import models
 class BaseModel():
     """ The class template for creating new instances of BaseModel
     """
+     
     def __init__(self, *args, **kwargs):
         """ This is the constructor for the class Base model
         """

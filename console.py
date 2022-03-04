@@ -24,6 +24,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, line):
+        print()
         return True
 
     def help_quit(self):
