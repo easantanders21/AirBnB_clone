@@ -99,6 +99,11 @@ class TestMyUser(unittest.TestCase):
         for func in dir(User):
             self.assertTrue(len(func.__doc__) > 0)
 
+    def test_subclass(self):
+        """Test to check the inheritance"""
+        new_object = User()
+        self.assertTrue(issubclass(new_object.__class__, BaseModel))
+
 
 if __name__ == '__main__':
     unittest.main()
