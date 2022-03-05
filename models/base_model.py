@@ -6,7 +6,7 @@ from datetime import datetime
 import models
 
 
-class BaseModel():
+class BaseModel:
     """ The class template for creating new instances of BaseModel
     """
 
