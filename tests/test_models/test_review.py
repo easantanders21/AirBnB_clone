@@ -40,5 +40,6 @@ class TestMyReview(unittest.TestCase):
         for func in dir(Review):
             self.assertTrue(len(func.__doc__) > 0)
 
+
 if __name__ == '__main__':
     unittest.main()

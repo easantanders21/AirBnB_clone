@@ -167,7 +167,8 @@ class HBNBCommand(cmd.Cmd):
         func_dict = {"all": self.do_all, "count": self.do_count,
                      "show": self.do_show, "destroy": self.do_destroy,
                      "update": self.do_update}
-        line = line.replace("(", ".").replace('"', "").replace(")", ".").replace(",", "")
+        line = line.replace("(", ".")
+        line = line.replace('"', "").replace(")", ".").replace(",", "")
         line_args = line.split(".")
         arg = line_args[0] + " " + line_args[2]
         func_dict[line_args[1]](arg)
