@@ -39,7 +39,7 @@ class TestBaseModel(unittest.TestCase):
     def test_str(self):
         """Test str function"""
         new_object = BaseModel()
-        str_test = "[BaseModel] ({}) {})".format(new_object.id,
+        str_test = "[BaseModel] ({}) {}".format(new_object.id,
                                                  new_object.__dict__)
         self.assertEqual(str_test, new_object.__str__())
 
