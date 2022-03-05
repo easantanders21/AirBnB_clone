@@ -16,9 +16,9 @@ import models
 class HBNBCommand(cmd.Cmd):
     """Simple command processor for airbnb."""
     prompt = '(hbnb) '
-    class_dict = {"Amenity" : Amenity, "BaseModel": BaseModel, 
-                  "City" : City, "Place" : Place, "Review" : Review,
-                  "State" : State, "User" : User}
+    class_dict = {"Amenity": Amenity, "BaseModel": BaseModel,
+                  "City": City, "Place": Place, "Review": Review,
+                  "State": State, "User": User}
 
     def do_quit(self, line):
         return True
@@ -131,7 +131,8 @@ class HBNBCommand(cmd.Cmd):
                         match = False
                         for k, v in update_dict.items():
                             if (k == key):
-                                v.__dict__.update({att_name: att_value.replace('"', "")})
+                                v.__dict__.update(
+                                    {att_name: att_value.replace('"', "")})
                                 models.storage.save()
                                 match = True
                                 break
@@ -145,33 +146,33 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
         else:
             print("** class name missing **")
-            
+
     def do_count(self, line):
         count_dict = models.storage.all()
         class_k = []
         count = 0
         for k in count_dict.keys():
             class_k = line.split(".")
+            class_k[0] = class_k[0].strip()
             if (class_k[0] in self.class_dict):
-                #print(class_k[0])
                 if (class_k[0] == line.strip()):
                     count += 1
             else:
-                print ("** class doesn't exist **")
+                print("** class doesn't exist **")
                 return
         print(count)
-                        
+
     def default(self, line):
         line_args = []
-        func_dict = {"all" : self.do_all, "count" : self.do_count, "show" : self.do_show,
-                     "destroy" : self.do_destroy, "update" : self.do_update}
-        line = line.replace("(", ".").replace('"', "").replace(")", ".").replace(",", "")
+        func_dict = {"all": self.do_all, "count": self.do_count,
+                     "show": self.do_show, "destroy": self.do_destroy,
+                     "update": self.do_update}
+        line = line.replace("(", ".")
+        line = line.replace('"', "").replace(")", ".").replace(",", "")
         line_args = line.split(".")
-        #print("este es line_args: ", line_args)
-        #print("este es line args en [2]: ", line_args[2])
         arg = line_args[0] + " " + line_args[2]
-        #print("este es arg: ", arg)
         func_dict[line_args[1]](arg)
-            
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
