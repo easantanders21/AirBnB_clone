@@ -10,12 +10,14 @@ from models.user import User
 class TestMyUser(unittest.TestCase):
     """Class TestMyUser to test class User"""
 
+    @classmethod
     def setUp(self):
         """setting up each test"""
         self.obj_user = User()
         self.obj_1 = BaseModel()
         self.obj_2 = BaseModel()
 
+    @classmethod
     def tearDown(self):
         """cleaning up after each test"""
         del self.obj_user
@@ -93,7 +95,7 @@ class TestMyUser(unittest.TestCase):
         self.assertTrue(len(self.obj_user.__doc__) > 0)
 
     def test_method_docs(self):
-        """ Method to check for method´s documentation."""
+        """ Method to check for methods documentation."""
         for func in dir(User):
             self.assertTrue(len(func.__doc__) > 0)
 
