@@ -16,3 +16,50 @@ The AirBnB clone project. The goal of the project is to deploy on the server a s
   -> Retrieve an object
   -> Update attributes of an object
   -> Destroy an object
+
+---
+
+## How to install it:
+
+```
+git clone https://github.com/easantanders21/AirBnB_clone.git
+cd AirBnB_clone
+```
+
+## Usage
+
+#### Interactive Mode
+
+```
+$ ./console.py
+(hbnb) help
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb)
+(hbnb)
+(hbnb) quit
+$
+```
+
+#### Non-Interactive Mode
+
+```
+$ echo "help" | ./console.py
+(hbnb)
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb)
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb)
+$
+```
