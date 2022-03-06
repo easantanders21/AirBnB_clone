@@ -29,7 +29,7 @@ class BaseModel:
         """ Method for the string form of the class
         """
         return ("[{}] ({}) {}".format
-                (self.__class__.__name__, self.id, self.__dict__))
+               (self.__class__.__name__, self.id, self.__dict__))
 
     def save(self):
         """ updates the public instance attribute updated_at
