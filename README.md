@@ -77,3 +77,15 @@ $
 | all     | `all [class_name]`, `[class_name].all()`                                                                                    | Displays every instance of class_name, if used without option displays every instance saved to the file |
 | destroy | `destroy [class_name] [object_id]` or `[class_name].destroy([object_id])()`                                                 | Deletes all attributes of class_name.object_id                                                          |
 | count   | `count [class_name]` or `[class_name].count()`                                                                              | Counts all the instances with class name specified)                                                     |
+
+[Authors]
+
+# Authors
+
+👤 **Edgar Santander**
+
+
+👤 **Juan Camilo Arce**
+
+
+6 - march - 2022
