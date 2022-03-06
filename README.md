@@ -63,3 +63,17 @@ EOF  help  quit
 (hbnb)
 $
 ```
+
+#### Commands Sintax with Respective Usage
+
+| Command | Syntax                                                                                                                      | Output                                                                                                  |
+| ------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| help    | `help [option]`                                                                                                             | Displays all available commands                                                                         |
+| quit    | `quit`                                                                                                                      | Exit command interpreter                                                                                |
+| EOF     | `EOF`                                                                                                                       | Exit command interpreter                                                                                |
+| create  | `create [class_name]` or `[class_name].create()`                                                                            | Creates an instance of class_name                                                                       |
+| update  | `update [class_name] [object_id] [update_key] [update_value]` or `[class].update([object_id] [update_key] [update_value]()` | Updates the key:value of class_name.object_id instance                                                  |
+| show    | `show [class_name] [object_id]` or `[class_name].show([object_id])()`                                                       | Displays all attributes of class_name.object_id                                                         |
+| all     | `all [class_name]`, `[class_name].all()`                                                                                    | Displays every instance of class_name, if used without option displays every instance saved to the file |
+| destroy | `destroy [class_name] [object_id]` or `[class_name].destroy([object_id])()`                                                 | Deletes all attributes of class_name.object_id                                                          |
+| count   | `count [class_name]` or `[class_name].count()`                                                                              | Counts all the instances with class name specified)                                                     |
