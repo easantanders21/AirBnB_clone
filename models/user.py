@@ -5,7 +5,7 @@ from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """ User class for the HBNB """
+    """Class that defines a User and inherits from BaseModel."""
     email = ""
     password = ""
     first_name = ""
