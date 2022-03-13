@@ -50,14 +50,14 @@ button:hover{
     margin-left: 20%;
 }
 
-.filters .locations .popover {
-    background: blue;
-    width: 100%;
+.popover {
+    background: #FAFAFA;
     border: #DDDDDD 1px solid;
 }
 
 .amenities .popover li {
     display: none;
+    height: 70px;
 }
 
 .amenities:hover > .popover li {
@@ -66,6 +66,7 @@ button:hover{
 
 .locations .popover li {
     display: none;
+    height: 70px;
 }
 
 .locations:hover > .popover li {
